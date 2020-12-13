@@ -1,0 +1,187 @@
+#include <Wire.h>
+#include "RTClib.h"
+#define RLY_ON 1
+#define RLY_OFF 0
+
+
+#define fill  2
+#define drain  4
+#define fragrance  7
+#define light  8
+
+
+RTC_DS1307 rtc;
+
+
+//  pinMode(2, OUTPUT); //fill
+//  pinMode(4, OUTPUT); //drain
+//  pinMode(7, OUTPUT); //fragrance
+//  pinMode(8, OUTPUT); //light
+
+
+void setup() {
+pinMode(fill, OUTPUT);
+pinMode(drain, OUTPUT);
+pinMode(fragrance, OUTPUT);
+pinMode(light, OUTPUT);
+
+
+digitalWrite(fill, RLY_OFF);
+digitalWrite(drain, RLY_OFF);
+digitalWrite(fragrance, RLY_OFF);
+digitalWrite(light, RLY_OFF);
+Serial.begin (9600);
+Wire.begin();
+
+
+  rtc.begin();
+
+
+  {
+
+
+   Serial.println("RTC is NOT running!");
+  }
+}
+
+
+void loop() {
+
+
+
+
+   DateTime now = rtc.now();
+
+
+   Serial.print(now.year(), DEC);
+   Serial.print('/');
+   Serial.print(now.month(), DEC);
+   Serial.print('/');
+   Serial.print(now.day(), DEC);
+   Serial.print('/');
+   Serial.print(now.hour(), DEC);
+   Serial.print('/');
+   Serial.print(now.minute(), DEC);
+   Serial.print('/');
+   Serial.print(now.second(), DEC);
+   Serial.println();
+
+
+    Serial.println();
+    delay(1000);
+
+
+////////////////////////////////////////////////////////////////////////////////////    
+//\4, 8, 12, 3, 6, 10, 12
+
+
+
+
+//switch on
+
+
+//1
+    if (now.hour() == 4 & now.minute() == 00 & now.second() == 0)
+    {
+digitalWrite(drain, HIGH);
+digitalWrite(fill, HIGH);
+delay(600000);
+digitalWrite(fill, LOW);
+delay(420000);
+digitalWrite(drain, LOW);
+digitalWrite(fill, HIGH);
+delay(420000);
+digitalWrite(fill, LOW);
+    }
+
+
+//2
+       if (now.hour() == 8 & now.minute() == 00 & now.second() == 0)
+    {
+digitalWrite(drain, HIGH);
+digitalWrite(fill, HIGH);
+delay(600000);
+digitalWrite(fill, LOW);
+delay(420000);
+digitalWrite(drain, LOW);
+digitalWrite(fill, HIGH);
+delay(420000);
+digitalWrite(fill, LOW);
+    }
+
+
+//3
+    if (now.hour() == 12 & now.minute() == 00 & now.second() == 0)
+    {
+digitalWrite(drain, HIGH);
+digitalWrite(fill, HIGH);
+delay(600000);
+digitalWrite(fill, LOW);
+delay(420000);
+digitalWrite(drain, LOW);
+digitalWrite(fill, HIGH);
+delay(420000);
+digitalWrite(fill, LOW);
+    }
+
+
+//4
+    if (now.hour() == 15 & now.minute() == 00 & now.second() == 0)
+    {
+digitalWrite(drain, HIGH);
+digitalWrite(fill, HIGH);
+delay(600000);
+digitalWrite(fill, LOW);
+delay(420000);
+digitalWrite(drain, LOW);
+digitalWrite(fill, HIGH);
+delay(420000);
+digitalWrite(fill, LOW);
+    }
+
+
+//5
+    if (now.hour() == 18 & now.minute() == 00 & now.second() == 0)
+    {
+digitalWrite(drain, HIGH);
+digitalWrite(fill, HIGH);
+delay(600000);
+digitalWrite(fill, LOW);
+delay(420000);
+digitalWrite(drain, LOW);
+digitalWrite(fill, HIGH);
+delay(420000);
+digitalWrite(fill, LOW);
+    }
+
+
+//6
+    if (now.hour() == 22 & now.minute() == 00 & now.second() == 0)
+    {
+digitalWrite(drain, HIGH);
+digitalWrite(fill, HIGH);
+delay(600000);
+digitalWrite(fill, LOW);
+delay(420000);
+digitalWrite(drain, LOW);
+digitalWrite(fill, HIGH);
+delay(420000);
+digitalWrite(fill, LOW);
+    }
+//7
+    if (now.hour() == 00 & now.minute() == 00 & now.second() == 0)
+    {
+digitalWrite(drain, HIGH);
+digitalWrite(fill, HIGH);
+delay(600000);
+digitalWrite(fill, LOW);
+delay(420000);
+digitalWrite(drain, LOW);
+digitalWrite(fill, HIGH);
+delay(420000);
+digitalWrite(fill, LOW);
+    }
+     
+
+
+}
